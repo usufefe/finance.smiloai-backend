@@ -15,7 +15,7 @@ Bu proje **iki ayrı servis** olarak deploy edilecek:
 3. Source: **GitHub**
 4. Repository: `https://github.com/usufefe/finance.smiloai-backend`
 5. Branch: `master`
-6. Base Directory: `backend/` (ÖNEMLİ: Root değil, backend klasörü!)
+6. Base Directory: `/` (root) - AYRI REPO İÇİN!
 
 **Environment Variables:**
 ```env
@@ -36,7 +36,7 @@ FRONTEND_URL=https://finance.smiloai.com
 3. Source: **GitHub**
 4. Repository: `https://github.com/usufefe/finanace.smilo-frontend`
 5. Branch: `master`
-6. Base Directory: `frontend/` (ÖNEMLİ: Root değil, frontend klasörü!)
+6. Base Directory: `/` (root) - AYRI REPO İÇİN!
 
 **Build Arguments & Environment Variables:**
 ```env
@@ -101,10 +101,17 @@ Deploy tamamlandıktan sonra:
 - Frontend'de `VITE_API_BASE_URL` doğru mu?
 
 ### "nginx.conf not found" Hatası
-⚠️  **EN YAGIN HATA**: Base Directory yanlış ayarlanmış!
-- Frontend için: `frontend/` (root değil!)
-- Backend için: `backend/` (root değil!)
-- Bu ayarı Coolify'da Resource Settings'ten düzeltin
+⚠️  **EN YAGIN HATA**: Dosyalar yanlış yerde!
+
+**AYRI REPOSITORY'LER İÇİN:**
+- `nginx.conf` dosyası frontend repo'nun **root**'unda olmalı
+- `Dockerfile` dosyası frontend repo'nun **root**'unda olmalı  
+- Coolify Base Directory: `/` (root)
+
+**ÇÖZÜMLERİ:**
+1. `nginx.conf`'u frontend repo'nun root'una kopyalayın
+2. `Dockerfile`'ı frontend repo'nun root'una kopyalayın
+3. Coolify'da Base Directory `/` olarak ayarlayın
 
 ### "502 Bad Gateway"
 - Container'lar çalışıyor mu?
